@@ -411,6 +411,63 @@ button:focus-visible{outline:3px solid #f9a15e;outline-offset:3px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
 
+
+/* ===== Reference-inspired movement studio UI ===== */
+:root{--bg:#eef7f6;--surface:#fff;--line:#e4eceb;--text:#18202b;--muted:#697581;--faint:#87929d;--rescue:#f47721;--rescue-press:#df6413}
+body{background:#edf7f5}
+.page{background:radial-gradient(ellipse at 8% 15%,rgba(185,225,220,.65),transparent 32%),radial-gradient(ellipse at 92% 78%,rgba(255,222,196,.55),transparent 28%),linear-gradient(135deg,#eff8f7,#f7f9fb 55%,#eef6f5)}
+header{border-bottom:1px solid rgba(220,232,231,.8)}
+.wordmark{font-size:1.2rem;font-weight:850;letter-spacing:-.045em}
+.wordmark i{width:1.05rem;height:1.05rem;border-radius:6px;background:linear-gradient(135deg,#ff9d4d,#ed6817)}
+.privacy{border:1px solid #e2e9e8;border-radius:999px;background:rgba(255,255,255,.8)}
+main{max-width:74rem;gap:1rem;padding-top:clamp(1.4rem,4vh,3rem);padding-bottom:2rem}
+#home{background:rgba(255,255,255,.88);border:1px solid #e4eceb;border-radius:30px;box-shadow:0 24px 70px rgba(45,78,82,.09);padding:clamp(1.5rem,5vw,3.75rem);overflow:hidden;position:relative}
+#home::before{content:"";position:absolute;right:-5rem;top:-7rem;width:20rem;height:20rem;border-radius:50%;background:linear-gradient(135deg,rgba(203,235,229,.75),rgba(255,225,203,.5));pointer-events:none}
+#home h1{position:relative;max-width:12ch;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:850;letter-spacing:-.065em;line-height:.99;margin:.6rem 0 1rem}
+#home .sub{position:relative;max-width:27rem;font-size:1.06rem;line-height:1.65;margin:0;color:#667381}
+.rescue-wrap{position:relative;margin-top:2rem;display:flex;flex-wrap:wrap;gap:.8rem}
+.rescue{width:min(100%,22rem);min-height:4.25rem;border:0;border-radius:16px;background:linear-gradient(135deg,#ff933a,#f47721);box-shadow:0 10px 22px rgba(244,119,33,.22);letter-spacing:.04em}
+.fast{width:min(100%,22rem);margin-top:0;min-height:4.25rem;border-radius:16px;border:1px solid #dfe8e7;background:#f6fbfa;color:#273342}
+.fast small{color:#788590}
+#home .note{width:100%;margin:.2rem 0 0;font-size:.85rem}
+#task-view,#fast-view{background:transparent;border:0;box-shadow:none;padding:0;max-width:68rem}
+#task-stage,#fast-stage{width:100%}
+#task-card{position:relative;width:100%;display:grid;grid-template-columns:minmax(190px,.75fr) minmax(0,1.25fr);grid-template-areas:"art progress" "art eyebrow" "art title" "art timer" "art how" "art easy";align-content:center;align-items:center;gap:.65rem 2.5rem;min-height:30rem;padding:clamp(1.25rem,4vw,3rem);border-radius:30px;border:1px solid #e2ecea;background:rgba(255,255,255,.94);box-shadow:0 22px 65px rgba(44,78,82,.09);text-align:left}
+#task-card .fig{grid-area:art;width:min(100%,18rem);height:18rem;min-height:14rem;margin:auto;display:flex;align-items:center;justify-content:center;border-radius:26px;background:linear-gradient(150deg,#e4f3f0,#f8f7f3);overflow:hidden}
+#task-card .fig[hidden]{display:none!important}
+#task-card .fig svg{width:100%;max-height:17rem}
+.session-progress{grid-area:progress;width:100%;display:flex;flex-direction:column;gap:.65rem}
+.session-progress-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:.86rem;color:#6b7885;font-weight:700}
+.session-progress-top strong{font-size:1rem;color:#18202b}
+.session-track{height:7px;background:#e9efee;border-radius:999px;overflow:hidden}
+.session-track span{display:block;height:100%;width:20%;border-radius:999px;background:linear-gradient(90deg,#ffb064,#f47721);transition:width .25s ease}
+.session-kicker{grid-area:eyebrow;font-size:.75rem;letter-spacing:.14em;font-weight:850;text-transform:uppercase;color:#ee741f;margin-top:.2rem}
+#task-text{grid-area:title;margin:.05rem 0;font-size:clamp(1.8rem,4vw,3rem);line-height:1.04;letter-spacing:-.055em;font-weight:850;color:#18202b;text-wrap:balance}
+#task-time{grid-area:timer;font-size:1rem;color:#ed741f;font-weight:800;margin:.15rem 0}
+.session-clock{grid-area:timer;justify-self:start;display:flex;align-items:center;gap:.7rem;margin-top:.3rem}
+.session-clock .clock-value{font-variant-numeric:tabular-nums;font-size:clamp(2.6rem,6vw,4.1rem);line-height:1;letter-spacing:-.06em;font-weight:850;color:#18202b}
+.session-clock .clock-label{font-size:.78rem;color:#788590;line-height:1.3;max-width:4.5rem}
+#task-how{grid-area:how;margin:0;color:#465464;font-size:1.02rem;line-height:1.6;max-width:28rem}
+#task-easy{grid-area:easy;margin:0;background:#f3f8f7;border:1px solid #e6efed;border-radius:14px;padding:.85rem 1rem;color:#6d7a86;font-size:.9rem;line-height:1.5}
+#task-view .actions,#fast-view .actions{width:100%;max-width:none;margin:1rem auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+#task-view .btn,#fast-view .btn{min-height:3.7rem;border-radius:15px;letter-spacing:.01em;font-size:.92rem}
+.btn-primary{background:linear-gradient(135deg,#ff933a,#f47721)!important;color:white!important;border:0!important;box-shadow:0 8px 18px #f4772128}
+.btn-primary:hover{background:#e96b17!important}
+.btn-secondary{background:#fff!important;color:#293647!important;border:1px solid #e0e8e7!important}
+.btn-back{background:#f3f7f6!important;border:1px solid #e4eceb!important;color:#657382!important}
+#done-msg{background:#fff;border:1px solid #e4eceb;border-radius:28px;padding:3rem 1.5rem;box-shadow:0 20px 60px rgba(44,78,82,.08)}
+#done-msg h2{font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.05em}
+footer{border-color:#e2ecea;color:#87929d}
+@media(max-width:650px){
+ #task-card{grid-template-columns:1fr;grid-template-areas:"progress" "art" "eyebrow" "title" "timer" "how" "easy";gap:.8rem;padding:1.2rem;border-radius:24px;min-height:0}
+ #task-card .fig{width:100%;height:10rem;min-height:10rem;border-radius:18px}
+ #task-card .fig svg{max-height:10rem}
+ #task-view .actions,#fast-view .actions{grid-template-columns:1fr;gap:.6rem}
+ #task-view .actions .btn,#fast-view .actions .btn{min-height:3.25rem}
+ #home h1{font-size:clamp(2.4rem,11vw,3.3rem)}
+ #home::before{width:12rem;height:12rem;right:-5rem;top:-3rem}
+}
+
 </style>
 </head>
 <body>
@@ -796,18 +853,111 @@ button:focus-visible{outline:3px solid #f9a15e;outline-offset:3px}
       taskStage.insertBefore(card, doneMsg);   // hand the card back to the normal RESCUE ME screen
       fastView.hidden = true; home.hidden = false; $('fast').focus();
     }
+
+    // ===== Five-move guided Rescue session with a real per-exercise countdown =====
+    var rescueSession = { list: [], index: 0, interval: null, endAt: 0, remaining: 0 };
+    var progressWrap = document.createElement('div');
+    progressWrap.className = 'session-progress';
+    progressWrap.innerHTML = '<div class="session-progress-top"><strong id="session-count">EXERCISE 1 OF 5</strong><span id="session-remaining">4 left after this</span></div><div class="session-track"><span id="session-fill"></span></div>';
+    var sessionKicker = document.createElement('div');
+    sessionKicker.className = 'session-kicker';
+    sessionKicker.textContent = 'YOUR QUICK RESET';
+    var sessionClock = document.createElement('div');
+    sessionClock.className = 'session-clock';
+    sessionClock.innerHTML = '<span class="clock-value" id="session-clock-value">00:20</span><span class="clock-label">seconds left</span>';
+    card.insertBefore(progressWrap, card.firstChild);
+    card.insertBefore(sessionKicker, text);
+    card.insertBefore(sessionClock, how);
+    time.hidden = true;
+    var countEl = progressWrap.querySelector('#session-count');
+    var leftEl = progressWrap.querySelector('#session-remaining');
+    var fillEl = progressWrap.querySelector('#session-fill');
+    var clockEl = sessionClock.querySelector('#session-clock-value');
+    function stopRescueClock() {
+      if (rescueSession.interval !== null) { clearInterval(rescueSession.interval); rescueSession.interval = null; }
+    }
+    function formatRescueTime(sec) {
+      var n = Math.max(0, Math.ceil(sec));
+      return '00:' + String(n).padStart(2, '0');
+    }
+    function pickFiveExercises() {
+      var pool = TASKS.filter(function(t){ return t.secs >= 10 && t.secs <= 30; });
+      for (var i = pool.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var v = pool[i]; pool[i] = pool[j]; pool[j] = v; }
+      var picked = [], usedFigures = {};
+      pool.forEach(function(t) {
+        if (picked.length >= 5) return;
+        var group = t.fig || t.text;
+        if (usedFigures[group]) return;
+        picked.push(t); usedFigures[group] = true;
+      });
+      return picked;
+    }
+    function paintRescueClock() {
+      var seconds = Math.max(0, (rescueSession.endAt - Date.now()) / 1000);
+      clockEl.textContent = formatRescueTime(seconds);
+      if (seconds <= 0) {
+        stopRescueClock();
+        if (rescueSession.index < rescueSession.list.length - 1) runRescueExercise(rescueSession.index + 1);
+        else finish();
+      }
+    }
+    function runRescueExercise(index) {
+      stopRescueClock();
+      rescueSession.index = index;
+      var t = rescueSession.list[index];
+      text.textContent = t.text;
+      how.textContent = t.how || 'Keep it comfortable. You can stop or modify the movement at any time.';
+      how.hidden = false;
+      easy.textContent = t.easy || 'Gentle movement is enough. No need to push yourself.';
+      easy.hidden = false;
+      for (var k = 0; k < figs.length; k++) figs[k].hidden = figs[k].getAttribute('data-fig') !== t.fig;
+      countEl.textContent = 'EXERCISE ' + (index + 1) + ' OF 5';
+      leftEl.textContent = (5 - index - 1) + (index === 3 ? ' left after this' : ' left after this');
+      fillEl.style.width = (((index + 1) / 5) * 100) + '%';
+      sessionKicker.textContent = index === 0 ? 'LET’S RESET' : 'KEEP IT GOING';
+      sessionClock.hidden = false;
+      time.hidden = true;
+      doneMsg.hidden = true;
+      afterActions.hidden = true;
+      taskActions.hidden = false;
+      card.hidden = false;
+      var nextBtn = $('done'); nextBtn.textContent = index === 4 ? 'Finish session' : 'Next exercise';
+      $('another').textContent = 'Skip exercise';
+      replay(card);
+      rescueSession.endAt = Date.now() + Math.max(10, t.secs) * 1000;
+      clockEl.textContent = formatRescueTime(t.secs);
+      rescueSession.interval = setInterval(paintRescueClock, 200);
+      text.focus({preventScroll:true});
+    }
+    function startRescueSession() {
+      stopRescueClock();
+      rescueSession.list = pickFiveExercises();
+      rescueSession.index = 0;
+      home.hidden = true; view.hidden = false;
+      runRescueExercise(0);
+    }
+    function advanceRescueExercise() {
+      stopRescueClock();
+      if (rescueSession.index >= 4) { finish(); return; }
+      runRescueExercise(rescueSession.index + 1);
+    }
+    function restartRescueSession() {
+      startRescueSession();
+    }
+    window.addEventListener('pagehide', stopRescueClock);
+
     $('fast').addEventListener('click', fastStart);
     $('fast-skip').addEventListener('click', fastSkip);
     $('fast-exit').addEventListener('click', fastLeave);
     $('fast-home').addEventListener('click', fastLeave);
     window.addEventListener('pagehide', stopFastTimer);
 
-    $('rescue').addEventListener('click', openRescue);
-    $('another').addEventListener('click', showTask);
-    $('done').addEventListener('click', finish);
-    $('more').addEventListener('click', showTask);   // only when the user chooses it; never automatic
-    $('okay').addEventListener('click', goBack);
-    $('back').addEventListener('click', goBack);
+    $('rescue').addEventListener('click', startRescueSession);
+    $('another').addEventListener('click', advanceRescueExercise);
+    $('done').addEventListener('click', advanceRescueExercise);
+    $('more').addEventListener('click', restartRescueSession);   // start a fresh five-exercise session
+    $('okay').addEventListener('click', function(){ stopRescueClock(); goBack(); });
+    $('back').addEventListener('click', function(){ stopRescueClock(); goBack(); });
   })();
 </script>
 </body>
