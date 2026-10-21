@@ -826,6 +826,131 @@ button:disabled{opacity:.55;cursor:not-allowed}
 }
 
 </style>
+<style>
+
+/* SESSION SCREEN — reference-led pastel workout layout, scoped only to #task-view */
+#task-view{
+ position:fixed!important;inset:0!important;z-index:50;width:100%!important;height:100dvh!important;
+ max-width:none!important;margin:0!important;padding:12px!important;gap:10px!important;
+ overflow:hidden!important;background:#f0edf9!important;color:#171720!important;
+ display:flex!important;flex-direction:column!important;
+ font-family:Inter,Manrope,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif!important;
+}
+#task-view[hidden]{display:none!important}
+#task-view #task-stage{width:100%;height:100%;min-height:0;flex:1;position:relative;overflow:hidden;border-radius:28px;background:#e7e1f6;box-shadow:0 16px 40px #31254a16}
+#task-view #task-card{
+ position:static!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;
+ justify-content:flex-start!important;gap:0!important;width:100%!important;max-width:none!important;height:100%!important;
+ min-height:0!important;padding:0!important;border:0!important;border-radius:0!important;overflow:visible!important;
+ background:transparent!important;box-shadow:none!important;text-align:left!important;
+}
+#task-view #task-card::before{display:none!important}
+#task-view .session-progress{position:absolute;z-index:5;left:12px;right:12px;top:12px;width:auto!important;
+ display:grid!important;grid-template-columns:1fr 1fr 1fr;gap:8px!important;margin:0!important}
+#task-view .session-progress-top{display:contents!important}
+#task-view #session-count,#task-view #session-remaining{display:none!important}
+#task-view .session-progress .session-track{display:none!important}
+#task-view .session-progress::before,#task-view .session-progress::after{content:"";display:block;grid-row:1;min-width:0;height:70px;border-radius:16px;box-shadow:0 8px 22px #1917290a}
+#task-view .session-progress::before{grid-column:1;background:#17171c}
+#task-view .session-progress::after{grid-column:2;background:#c9f2e5}
+#task-view .session-kicker{position:absolute!important;z-index:4;top:98px;left:24px;grid-area:auto!important;
+ display:block!important;margin:0!important;padding:7px 11px;border-radius:999px;background:#ffffffb8;
+ color:#35313f!important;font-size:10px!important;letter-spacing:.12em!important;font-weight:700!important;
+ backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+#task-view #task-text{position:absolute!important;z-index:4;top:136px;left:24px;right:24px;grid-area:auto!important;
+ margin:0!important;font-size:13px!important;line-height:1.25!important;letter-spacing:.01em!important;font-weight:600!important;
+ color:#373343!important;max-width:calc(100% - 48px);text-wrap:balance;text-shadow:0 1px 0 #ffffff66}
+#task-view #task-how,#task-view #task-easy,#task-view #task-time{display:none!important}
+#task-view .fig{position:absolute!important;inset:0!important;z-index:1;width:100%!important;height:100%!important;
+ min-height:0!important;margin:0!important;padding:0!important;border-radius:0!important;overflow:hidden!important;
+ display:flex;align-items:center;justify-content:center;background:#e8e2f5!important}
+#task-view .fig[hidden]{display:none!important}
+#task-view .fig svg{display:none!important}
+#task-view .fig::before{content:"";position:absolute;inset:0;background-image:
+ linear-gradient(180deg,#eee9f4 0%,#eee9f4 12%,#e8e1f3 42%,#d9d7ef 100%);
+}
+#task-view .fig::after{content:"";position:absolute;inset:0;opacity:.95;background:
+ radial-gradient(ellipse at 50% 76%,#f7d7c8 0%,#f7d7c8 18%,transparent 18.5%),
+ radial-gradient(ellipse at 50% 58%,#4b4b5d 0%,#4b4b5d 11%,transparent 11.5%),
+ radial-gradient(ellipse at 50% 36%,#c99476 0%,#c99476 5.5%,transparent 6%),
+ linear-gradient(105deg,transparent 0 26%,#4b4b5d 26% 31%,transparent 31% 69%,#4b4b5d 69% 74%,transparent 74%);
+}
+#task-view .fig[data-fig="boxing"]::after{transform:rotate(-7deg) scale(1.12);background:
+ radial-gradient(ellipse at 50% 76%,#f7d7c8 0%,#f7d7c8 18%,transparent 18.5%),
+ radial-gradient(ellipse at 50% 58%,#b5a6ef 0%,#b5a6ef 11%,transparent 11.5%),
+ radial-gradient(ellipse at 50% 36%,#c99476 0%,#c99476 5.5%,transparent 6%),
+ linear-gradient(75deg,transparent 0 25%,#b5a6ef 25% 31%,transparent 31% 69%,#b5a6ef 69% 75%,transparent 75%)}
+#task-view .fig[data-fig="squat"]::after,#task-view .fig[data-fig="march"]::after,#task-view .fig[data-fig="knees"]::after{animation:person-breathe 2.6s ease-in-out infinite alternate}
+@keyframes person-breathe{from{transform:translateY(0) scale(1)}to{transform:translateY(-5px) scale(1.012)}}
+#task-view .session-clock{position:absolute!important;z-index:6;top:12px;right:12px;grid-area:auto!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:1px!important;
+ width:calc((100% - 40px)/3);height:70px;margin:0!important;border-radius:16px;background:#fff!important;
+ color:#181820;box-shadow:0 8px 22px #1917290a}
+#task-view .clock-value{display:block!important;font-size:21px!important;line-height:1.2!important;letter-spacing:-.04em!important;
+ color:#181820!important;font-weight:700!important;font-variant-numeric:tabular-nums!important;text-shadow:none!important}
+#task-view .clock-label{font-size:10px!important;color:#777582!important}
+#task-view .session-progress::before{content:"";background:#17171c}
+#task-view .session-progress::after{content:"";background:#c9f2e5}
+#task-view .session-progress{counter-reset:none}
+#task-view .session-progress:has(#session-count)::before{content:"";grid-column:1}
+#task-view .session-progress:has(#session-count)::after{content:"";grid-column:2}
+#task-view .session-progress-top{position:absolute;z-index:2;left:0;top:0;width:calc((100% - 16px)/3);height:70px;display:flex!important;align-items:center;justify-content:center}
+#task-view .session-progress-top strong{display:block!important;color:white!important;font-size:20px!important;letter-spacing:-.04em!important}
+#task-view .session-progress-top strong::first-letter{color:inherit}
+#task-view .session-progress-top span{display:none!important}
+#task-view .session-progress .session-track{display:block!important;position:absolute;z-index:2;top:63px;left:12px;width:calc((100% - 16px)/3 - 24px);height:2px!important;background:#ffffff35!important}
+#task-view #session-fill{display:block!important;height:100%;background:#fff!important}
+#task-view .session-progress::marker{display:none}
+#task-view .actions{position:absolute!important;z-index:8;left:50%;bottom:22px;transform:translateX(-50%);width:auto!important;max-width:none!important;
+ display:flex!important;flex-direction:row!important;align-items:center;justify-content:center;gap:12px!important;margin:0!important;padding:10px 14px;
+ border:1px solid #ffffff80;border-radius:999px;background:#ffffff45;box-shadow:0 10px 30px #26203916;
+ backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+#task-view #task-actions .btn,#task-view #after-actions .btn{
+ flex:0 0 auto!important;display:inline-flex;align-items:center;justify-content:center;min-width:0!important;width:42px!important;height:42px!important;min-height:42px!important;
+ padding:0!important;border:0!important;border-radius:50%!important;background:#ffffffc9!important;color:#292632!important;
+ box-shadow:0 4px 12px #2b23301a!important;font-size:0!important;letter-spacing:0!important}
+#task-view #task-actions #done{width:54px!important;height:54px!important;background:#c8f1e4!important;color:#20232a!important}
+#task-view #task-actions #done::before{content:"Ⅱ";font-size:22px;font-weight:700}
+#task-view #task-actions #another::before{content:"›";font-size:30px;line-height:1}
+#task-view #task-actions #back::before{content:"‹";font-size:30px;line-height:1}
+#task-view #task-actions #back{display:inline-flex!important}
+#task-view #task-actions #another{order:3}
+#task-view #task-actions #back{order:1}
+#task-view #task-actions #done{order:2}
+#task-view #after-actions{bottom:22px!important}
+#task-view #after-actions .btn{width:auto!important;padding:0 18px!important;border-radius:999px!important;font-size:12px!important}
+#task-view .done-msg{position:absolute;z-index:5;top:42%;left:20px;right:20px;color:#292532!important;text-align:center}
+@media(max-width:430px){
+ #task-view{padding:8px!important;gap:8px!important}
+ #task-view #task-stage{border-radius:24px}
+ #task-view .session-progress{left:8px;right:8px;top:8px;gap:6px!important}
+ #task-view .session-progress::before,#task-view .session-progress::after,#task-view .session-clock{height:64px!important;border-radius:15px!important}
+ #task-view .session-progress-top{height:64px;width:calc((100% - 12px)/3)}
+ #task-view .session-progress-top strong{font-size:18px!important}
+ #task-view .session-progress .session-track{top:57px;left:10px;width:calc((100% - 12px)/3 - 20px)}
+ #task-view .session-clock{top:8px;right:8px;width:calc((100% - 28px)/3)}
+ #task-view .clock-value{font-size:19px!important}
+ #task-view #task-text{top:111px;left:18px;right:18px;font-size:12px!important}
+ #task-view .session-kicker{top:82px;left:18px;font-size:9px!important}
+ #task-view .actions{bottom:18px;padding:8px 10px;gap:10px!important}
+ #task-view #task-actions #done{width:50px!important;height:50px!important}
+ #task-view #task-actions .btn{width:38px!important;height:38px!important;min-height:38px!important}
+}
+@media(prefers-color-scheme:dark){
+ body.night-mode #task-view{background:#11111b!important}
+}
+
+</style>
+<style>
+
+#task-view .session-reps{position:absolute;z-index:3;top:0;left:calc((100% - 16px)/3 + 8px);width:calc((100% - 16px)/3);height:70px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;color:#20232a;pointer-events:none}
+#task-view .session-reps strong{font-size:25px;line-height:1.05;font-weight:700;letter-spacing:-.05em}
+#task-view .session-reps span{font-size:10px;color:#47564f;font-weight:500}
+#task-view #task-actions #done.is-paused::before{content:"▶";font-size:17px}
+#task-view #task-actions #done::before{content:"Ⅱ";font-size:22px;font-weight:700}
+@media(max-width:430px){#task-view .session-reps{left:calc((100% - 12px)/3 + 6px);width:calc((100% - 12px)/3);height:64px}#task-view .session-reps strong{font-size:23px}}
+
+</style>
 </head>
 <body>
 <div class="page">
@@ -1221,7 +1346,13 @@ button:disabled{opacity:.55;cursor:not-allowed}
     sessionKicker.textContent = 'YOUR QUICK RESET';
     var sessionClock = document.createElement('div');
     sessionClock.className = 'session-clock';
-    sessionClock.innerHTML = '<span class="clock-value" id="session-clock-value">00:20</span><span class="clock-label">seconds left</span>';
+    sessionClock.innerHTML = '<span class="clock-value" id="session-clock-value">00:30</span><span class="clock-label">seconds</span>';
+    var repCount = document.createElement('div');
+    repCount.className = 'session-reps';
+    repCount.id = 'session-reps';
+    repCount.innerHTML = '<strong id="session-rep-value">10</strong><span id="session-rep-label">jabs</span>';
+    progressWrap.appendChild(repCount);
+    var paused = false;
     card.insertBefore(progressWrap, card.firstChild);
     card.insertBefore(sessionKicker, text);
     card.insertBefore(sessionClock, how);
@@ -1274,7 +1405,19 @@ button:disabled{opacity:.55;cursor:not-allowed}
       sessionKicker.textContent = '';
       sessionKicker.hidden = true;
       var isTimed = /\b(?:for|hold(?:\s+it\s+)?for)\s+\d+\s+seconds?\b|\b\d+\s+seconds?\b/i.test(t.text);
-      sessionClock.hidden = !isTimed;
+      sessionClock.hidden = false;
+      paused = false;
+      var pauseBtn = $('done');
+      pauseBtn.setAttribute('aria-label', 'Pause timer');
+      pauseBtn.setAttribute('title', 'Pause');
+      pauseBtn.dataset.paused = 'false';
+      var repValue = $('session-rep-value');
+      var repLabel = $('session-rep-label');
+      var repMatch = t.text.match(/\b(\d+)\s+(jabs?|punches?|reps?|push-ups?|squats?|jumps?|steps?|raises?)\b/i);
+      repValue.textContent = repMatch ? repMatch[1] : (isTimed ? String(t.secs) : '10');
+      repLabel.textContent = repMatch ? repMatch[2].toLowerCase() : (isTimed ? 'seconds' : 'reps');
+      var visual = card.querySelector('.fig:not([hidden])');
+      if (visual) visual.setAttribute('aria-label', 'Exercise demonstration visual');
       time.hidden = true;
       doneMsg.hidden = true;
       afterActions.hidden = true;
@@ -1318,7 +1461,29 @@ button:disabled{opacity:.55;cursor:not-allowed}
 
     $('rescue').addEventListener('click', startRescueSession);
     $('another').addEventListener('click', advanceRescueExercise);
-    $('done').addEventListener('click', advanceRescueExercise);
+    $('done').addEventListener('click', function(){
+      if (rescueSession.interval !== null) {
+        stopRescueClock();
+        paused = true;
+        $('done').dataset.paused = 'true';
+        $('done').setAttribute('aria-label', 'Resume timer');
+        $('done').setAttribute('title', 'Play');
+        $('done').classList.add('is-paused');
+        $('done').innerHTML = '';
+        $('done').style.setProperty('--pause-icon', '"▶"');
+      } else if (paused) {
+        paused = false;
+        rescueSession.endAt = Date.now() + Math.max(0, parseInt(clockEl.textContent.split(':')[1],10) || 0) * 1000;
+        rescueSession.interval = setInterval(paintRescueClock, 200);
+        $('done').dataset.paused = 'false';
+        $('done').setAttribute('aria-label', 'Pause timer');
+        $('done').setAttribute('title', 'Pause');
+        $('done').classList.remove('is-paused');
+        $('done').style.removeProperty('--pause-icon');
+      } else {
+        advanceRescueExercise();
+      }
+    });
     $('more').addEventListener('click', restartRescueSession);   // start a fresh five-exercise session
     $('okay').addEventListener('click', function(){ stopRescueClock(); goBack(); });
     $('back').addEventListener('click', function(){ stopRescueClock(); goBack(); });
