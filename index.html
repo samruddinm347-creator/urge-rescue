@@ -468,6 +468,40 @@ footer{border-color:#e2ecea;color:#87929d}
  #home::before{width:12rem;height:12rem;right:-5rem;top:-3rem}
 }
 
+
+/* Compact, visual-first rescue session refinement */
+@media(max-width:650px){
+  body{background:linear-gradient(155deg,#e8f7f3 0%,#f7faf9 58%,#fff0e3 100%);color:#18202b}
+  .page{padding-left:1rem;padding-right:1rem}
+  header{padding:.85rem 0;gap:.5rem}
+  .wordmark{font-size:1rem}
+  .privacy{font-size:.68rem;padding:.3rem .45rem}
+  #task-view,#fast-view{width:100%}
+  #task-card{
+    display:flex;flex-direction:column;align-items:stretch;justify-content:center;
+    gap:.55rem;min-height:0;padding:1rem;border-radius:24px;
+    background:rgba(255,255,255,.96);border:1px solid #e4eeeb;
+    box-shadow:0 14px 38px rgba(36,75,72,.07);text-align:left
+  }
+  #task-card .session-progress{order:0;gap:.45rem;margin-bottom:.15rem}
+  .session-progress-top{font-size:.76rem}
+  .session-progress-top strong{font-size:.84rem}
+  .session-progress-top span{font-size:.72rem}
+  .session-track{height:5px}
+  #task-card .fig{order:1;width:100%;height:clamp(9rem,30vh,12rem);min-height:0;margin:.2rem 0 .35rem;border-radius:20px;background:linear-gradient(145deg,#e4f5f0,#f5f8f7)}
+  #task-card .fig svg{width:100%;height:100%;max-height:11rem}
+  #task-card .session-kicker{display:none}
+  #task-text{order:2;font-size:clamp(1.55rem,7vw,2.15rem);line-height:1.08;letter-spacing:-.045em;margin:.1rem 0 .25rem}
+  #task-card .session-clock{order:3;display:flex;align-items:baseline;gap:.55rem;margin:.1rem 0 .25rem}
+  .session-clock .clock-value{font-size:clamp(3.4rem,15vw,4.5rem);letter-spacing:-.07em}
+  .session-clock .clock-label{font-size:.8rem;max-width:none}
+  #task-how,#task-easy,#task-time{display:none!important}
+  #task-view .actions,#fast-view .actions{display:flex;flex-direction:column;gap:.55rem;margin:.8rem auto 0}
+  #task-view .actions .btn,#fast-view .actions .btn{min-height:3.35rem;border-radius:16px;font-size:.95rem}
+  #task-view .actions .btn-secondary{min-height:2.7rem;background:transparent!important;border-color:transparent!important;color:#697887!important}
+  #done-msg{padding:2rem 1rem;border-radius:24px}
+}
+
 </style>
 </head>
 <body>
