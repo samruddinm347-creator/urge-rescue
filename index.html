@@ -548,6 +548,66 @@ button:focus-visible{outline:3px solid var(--rescue);outline-offset:3px}
   #task-card .clock-value{font-size:3.8rem!important}
 }
 
+
+/* Final mobile hierarchy: compact copy, visible character, timer in its own focal row */
+#task-card .fig svg{overflow:visible}
+@media(max-width:700px){
+  #task-card{
+    grid-template-areas:"progress" "eyebrow" "title" "timer" "art" "how" "easy"!important;
+    gap:.7rem!important;
+    padding:1rem!important;
+  }
+  #task-card .session-progress{margin-bottom:.1rem!important}
+  #task-card .session-kicker{font-size:.72rem!important;letter-spacing:.13em!important}
+  #task-card #task-text{
+    max-width:22ch!important;
+    margin:0 auto!important;
+    font-size:clamp(1.55rem,6.1vw,2.05rem)!important;
+    line-height:1.13!important;
+    letter-spacing:-.035em!important;
+    text-wrap:balance!important;
+  }
+  #task-card .session-clock{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:.15rem!important;
+    padding:.45rem 0!important;
+    margin:0!important;
+  }
+  #task-card .clock-value{font-size:clamp(3.6rem,13vw,4.6rem)!important}
+  #task-card .clock-label{font-size:.82rem!important}
+  #task-card .fig{
+    width:min(100%,19rem)!important;
+    height:clamp(13rem,43vw,17rem)!important;
+    min-height:13rem!important;
+    margin:.1rem auto!important;
+    border-radius:22px!important;
+  }
+  #task-card .fig svg{width:100%!important;height:100%!important;max-height:16rem!important}
+  #task-card #task-how{
+    max-width:29ch!important;
+    margin:.1rem auto 0!important;
+    font-size:.98rem!important;
+    line-height:1.45!important;
+  }
+  #task-card #task-easy{
+    margin:.1rem 0 0!important;
+    padding:.75rem .85rem!important;
+    font-size:.88rem!important;
+    line-height:1.4!important;
+  }
+  #task-card .session-progress-top{font-size:.78rem!important}
+  #task-card .session-track{height:7px!important}
+}
+@media(max-width:390px){
+  #task-card{gap:.6rem!important;padding:.85rem!important}
+  #task-card #task-text{font-size:1.55rem!important}
+  #task-card .fig{height:12.5rem!important;min-height:12.5rem!important}
+  #task-card .clock-value{font-size:3.45rem!important}
+}
+
 </style>
 </head>
 <body>
