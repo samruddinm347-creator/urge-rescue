@@ -879,7 +879,7 @@ button:focus-visible{outline:3px solid var(--rescue);outline-offset:3px}
     function showTask() {
       var t = TASKS[nextIndex()];
       text.textContent = t.text;
-      time.textContent = t.time;
+      time.textContent = '';
       how.textContent = t.how;
       how.hidden = !t.how;
       easy.textContent = t.easy;
@@ -1054,8 +1054,10 @@ button:focus-visible{outline:3px solid var(--rescue);outline-offset:3px}
       countEl.textContent = 'EXERCISE ' + (index + 1) + ' OF 5';
       leftEl.textContent = (5 - index - 1) + (index === 3 ? ' left after this' : ' left after this');
       fillEl.style.width = (((index + 1) / 5) * 100) + '%';
-      sessionKicker.textContent = index === 0 ? 'LET’S RESET' : 'KEEP IT GOING';
-      sessionClock.hidden = false;
+      sessionKicker.textContent = '';
+      sessionKicker.hidden = true;
+      var isTimed = /\b(?:for|hold(?:\s+it\s+)?for)\s+\d+\s+seconds?\b|\b\d+\s+seconds?\b/i.test(t.text);
+      sessionClock.hidden = !isTimed;
       time.hidden = true;
       doneMsg.hidden = true;
       afterActions.hidden = true;
@@ -1064,9 +1066,14 @@ button:focus-visible{outline:3px solid var(--rescue);outline-offset:3px}
       var nextBtn = $('done'); nextBtn.textContent = index === 4 ? 'Finish session' : 'Next exercise';
       $('another').textContent = 'Skip exercise';
       replay(card);
-      rescueSession.endAt = Date.now() + Math.max(10, t.secs) * 1000;
-      clockEl.textContent = formatRescueTime(t.secs);
-      rescueSession.interval = setInterval(paintRescueClock, 200);
+      if (isTimed) {
+        rescueSession.endAt = Date.now() + Math.max(10, t.secs) * 1000;
+        clockEl.textContent = formatRescueTime(t.secs);
+        rescueSession.interval = setInterval(paintRescueClock, 200);
+      } else {
+        rescueSession.endAt = 0;
+        clockEl.textContent = '';
+      }
       text.focus({preventScroll:true});
     }
     function startRescueSession() {
