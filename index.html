@@ -638,6 +638,72 @@ button:focus-visible{outline:3px solid var(--rescue);outline-offset:3px}
   #task-card .fig{height:11.5rem!important;min-height:11.5rem!important}
 }
 
+
+/* Session player v2 — Midnight Aurora. Scoped to the player only. */
+#task-view{
+  --bg:#0b1020;
+  --surface:#141b31;
+  --line:#293653;
+  --text:#f5f3ff;
+  --muted:#a8b3cf;
+  --faint:#8290b1;
+  --rescue:#8b7cff;
+  --rescue-press:#7163e8;
+  --rescue-ink:#fff;
+  --ok:#72e0c0;
+  width:100%;
+  max-width:34rem;
+  align-self:center;
+  color:var(--text);
+}
+#task-view #task-card{
+  width:100%;
+  display:grid;
+  grid-template-areas:"progress" "figure" "eyebrow" "title" "timer" "how" "easy" "actions";
+  grid-template-columns:minmax(0,1fr);
+  justify-items:stretch;
+  align-items:center;
+  gap:1rem;
+  padding:clamp(1rem,4vw,1.5rem);
+  border:1px solid rgba(137,153,205,.22);
+  border-radius:28px;
+  background:radial-gradient(ellipse at 50% 0%,rgba(123,108,255,.14),transparent 58%),linear-gradient(160deg,#151d35 0%,#10172b 100%);
+  box-shadow:0 24px 70px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.04);
+  text-align:center;
+}
+#task-view .session-progress{grid-area:progress!important;gap:.7rem!important;margin:0!important}
+#task-view .session-progress-top{font-size:.78rem!important;color:#a8b3cf!important}
+#task-view .session-progress-top strong{font-size:.78rem!important;letter-spacing:.12em!important;color:#c7d2f1!important}
+#task-view .session-track{height:6px!important;background:#293653!important}
+#task-view .session-track span{background:linear-gradient(90deg,#8b7cff,#72e0c0)!important;box-shadow:0 0 14px rgba(139,124,255,.28)}
+#task-view .session-kicker{display:block!important;grid-area:eyebrow!important;margin:0!important;color:#72e0c0!important;font-size:.68rem!important;letter-spacing:.18em!important}
+#task-view #task-text{grid-area:title!important;margin:0 auto!important;max-width:23ch!important;font-size:clamp(1.6rem,6vw,2.15rem)!important;line-height:1.13!important;letter-spacing:-.035em!important;font-weight:730!important;color:#f5f3ff!important}
+#task-view .fig{grid-area:figure!important;width:min(100%,15rem)!important;height:clamp(10rem,34vw,13rem)!important;min-height:10rem!important;margin:0 auto!important;display:flex;align-items:center;justify-content:center}
+#task-view .fig[hidden]{display:none!important}
+#task-view .fig svg{max-height:13rem!important}
+#task-view .pu-floor{stroke:#354565!important}
+#task-view .session-clock{grid-area:timer!important;justify-content:center!important;align-items:center!important;gap:.15rem!important;margin:0!important;padding:.45rem 0!important;border:0!important;background:transparent!important}
+#task-view .clock-value{font-variant-numeric:tabular-nums;font-size:clamp(2.65rem,10vw,3.35rem)!important;line-height:1!important;letter-spacing:-.055em;color:#f5f3ff!important;font-weight:760}
+#task-view .clock-label{font-size:.75rem!important;letter-spacing:.08em;text-transform:uppercase;color:#8290b1!important}
+#task-view #task-how,#task-view #task-easy{grid-area:how;max-width:27rem;margin:0 auto!important;color:#a8b3cf!important;font-size:.92rem!important}
+#task-view #task-easy{grid-area:easy}
+#task-view .task-actions,#task-view #task-actions{grid-area:actions;width:100%}
+#task-view button{border-radius:14px;min-height:3.25rem;font-weight:680;touch-action:manipulation}
+#task-view #done{background:linear-gradient(135deg,#8b7cff,#6f63e8)!important;color:white!important;box-shadow:0 8px 24px rgba(123,108,255,.22)!important}
+#task-view #another{border:1px solid #34415f!important;background:rgba(255,255,255,.035)!important;color:#c5cee5!important}
+#task-view button:focus-visible{outline:3px solid #72e0c0!important;outline-offset:3px}
+#task-view .done-msg{color:#f5f3ff}
+#task-view .done-sub{color:#a8b3cf}
+@media(max-width:390px){
+  #task-view #task-card{padding:.9rem;gap:.75rem;border-radius:22px}
+  #task-view #task-text{font-size:1.5rem!important}
+  #task-view .fig{height:10rem!important;min-height:10rem!important}
+  #task-view .clock-value{font-size:2.6rem!important}
+}
+@media(prefers-reduced-motion:reduce){
+  #task-view *,#task-view *::before,#task-view *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+
 </style>
 </head>
 <body>
