@@ -491,6 +491,63 @@ button:focus-visible{outline:3px solid var(--rescue);outline-offset:3px}
   .clock-value{font-size:3.35rem}
 }
 
+
+/* Mobile-first exercise screen: simplify hierarchy and make movement demo dominant */
+@media(max-width:700px){
+  #task-card{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-areas:
+      "progress"
+      "art"
+      "eyebrow"
+      "title"
+      "timer"
+      "how"
+      "easy"!important;
+    gap:clamp(.65rem,2.8vw,1rem)!important;
+    padding:clamp(1rem,4vw,1.4rem)!important;
+    min-height:0!important;
+    text-align:center!important;
+  }
+  #task-card .session-progress{grid-area:progress!important;width:100%!important}
+  #task-card .fig{
+    grid-area:art!important;
+    width:min(100%,25rem)!important;
+    max-width:25rem!important;
+    height:clamp(19rem,68vw,26rem)!important;
+    min-height:19rem!important;
+    margin:.15rem auto .25rem!important;
+    border-radius:25px!important;
+  }
+  #task-card .fig svg{width:100%!important;height:100%!important;max-height:25rem!important}
+  #task-card .session-kicker{grid-area:eyebrow!important;margin:0!important}
+  #task-card #task-text{grid-area:title!important;font-size:clamp(1.8rem,7vw,2.4rem)!important;line-height:1.08!important;margin:0!important}
+  #task-card .session-clock{
+    grid-area:timer!important;
+    width:100%!important;
+    justify-content:center!important;
+    align-items:baseline!important;
+    gap:.35rem .7rem!important;
+    margin:.2rem 0!important;
+    padding:.8rem .65rem!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+  }
+  #task-card .clock-value{font-size:clamp(4rem,15vw,5.4rem)!important;line-height:.98!important}
+  #task-card .clock-label{font-size:.95rem!important}
+  #task-card #task-how{grid-area:how!important;margin:.1rem auto 0!important;font-size:1.05rem!important;line-height:1.55!important}
+  #task-card #task-easy{grid-area:easy!important;margin:.15rem 0 0!important;padding:.9rem!important;font-size:.95rem!important}
+  #task-card .session-progress-top{font-size:.82rem!important}
+  #task-card .session-progress-top strong{font-size:.95rem!important}
+  #task-card .session-track{height:8px!important}
+}
+@media(max-width:390px){
+  #task-card .fig{height:19rem!important;min-height:19rem!important}
+  #task-card .clock-value{font-size:3.8rem!important}
+}
+
 </style>
 </head>
 <body>
