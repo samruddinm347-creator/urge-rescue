@@ -721,6 +721,43 @@ footer{max-width:74rem;width:100%;margin:0 auto;color:#8996a0;text-align:center;
 
 
 
+
+/* URGE RESCUE — targeted dark fitness palette v2 */
+:root{
+ color-scheme:dark;
+ --bg:#171a18; --surface:#252925; --line:rgba(245,245,240,.12);
+ --text:#f5f5f0; --muted:#a8afa5; --faint:#858d82;
+ --rescue:#b8f45a; --rescue-press:#a2df43; --rescue-ink:#171a18;
+ --ok:#b8f45a;
+}
+body{background:var(--bg)!important;color:var(--text)!important}
+.page{max-width:100%;background:radial-gradient(ellipse at 15% 30%,rgba(184,244,90,.055),transparent 42%),var(--bg)}
+header{border-bottom:1px solid var(--line);max-width:68rem}
+.wordmark{font-size:clamp(1.15rem,4vw,1.55rem);font-weight:800;letter-spacing:-.045em}
+.wordmark i{width:12px;height:12px;background:var(--rescue);box-shadow:0 0 20px rgba(184,244,90,.3)}
+.privacy{border-radius:999px;background:var(--surface);border-color:var(--line);padding:.5rem .8rem}
+main{max-width:42rem}
+.view{width:100%}
+#home{padding:clamp(1.5rem,5vw,3rem);border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.035),transparent 50%),var(--surface);box-shadow:0 24px 70px rgba(0,0,0,.22)}
+h1{font-size:clamp(2.4rem,9vw,4.2rem);letter-spacing:-.06em;line-height:1.02;font-weight:850}
+.sub{font-size:clamp(1.05rem,3.5vw,1.25rem);line-height:1.65;color:var(--muted);margin-top:1.25rem}
+.rescue-wrap{margin-top:clamp(2.2rem,7vh,4rem)}
+.rescue{min-height:5.4rem;border-radius:20px;background:var(--rescue)!important;color:var(--rescue-ink)!important;letter-spacing:.015em;font-size:1.25rem;box-shadow:0 10px 0 rgba(108,151,45,.25),0 18px 40px rgba(184,244,90,.10)}
+.rescue:hover{background:#c5ff70!important}
+.fast{min-height:4.5rem;border-radius:18px;background:#1b201b!important;border:1px solid rgba(184,244,90,.35)!important;color:var(--text)!important;letter-spacing:.015em}
+.fast small{color:var(--muted)!important}
+.fast:hover{background:#252d23!important}
+.note{color:var(--muted)!important;margin-top:1.35rem}
+.task-text,.done-msg{color:var(--text)}
+.task-time,.task-easy,.done-sub{color:var(--muted)}
+.hud-time{color:var(--rescue)}
+.hud-bar{background:var(--line)}
+.hud-bar span{background:var(--rescue)}
+.hud-dots i.on{background:var(--rescue)}
+.btn{border-radius:16px}
+.btn.primary,.btn-primary{background:var(--rescue)!important;color:var(--rescue-ink)!important}
+@media(max-width:480px){.page{padding:0 1rem}header{padding:1rem 0;gap:.65rem}.privacy{font-size:.72rem;padding:.4rem .55rem}#home{padding:1.5rem 1.1rem;border-radius:24px}h1{font-size:clamp(2.35rem,10vw,3.2rem)}}
+
 </style>
 </head>
 <body>
