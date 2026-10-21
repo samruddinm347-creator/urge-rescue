@@ -608,6 +608,36 @@ button:focus-visible{outline:3px solid var(--rescue);outline-offset:3px}
   #task-card .clock-value{font-size:3.45rem!important}
 }
 
+
+/* Clean guided exercise view: only the essential instruction and a restrained timer */
+@media(max-width:700px){
+  #task-card{gap:.55rem!important;padding:1rem!important}
+  #task-card .session-kicker{display:none!important}
+  #task-card #task-text{
+    font-size:clamp(1.35rem,5.2vw,1.8rem)!important;
+    line-height:1.15!important;
+    max-width:24ch!important;
+    letter-spacing:-.025em!important;
+    margin:.15rem auto!important;
+  }
+  #task-card .session-clock{
+    padding:.25rem 0!important;
+    margin:0!important;
+    gap:.1rem!important;
+  }
+  #task-card .clock-value{font-size:clamp(2.7rem,9vw,3.35rem)!important;line-height:1!important}
+  #task-card .clock-label{font-size:.78rem!important}
+  #task-card .fig{height:clamp(12rem,38vw,15rem)!important;min-height:12rem!important}
+  #task-card .fig svg{max-height:14rem!important}
+  #task-card #task-how,#task-card #task-easy{display:none!important}
+}
+@media(max-width:390px){
+  #task-card{gap:.45rem!important;padding:.85rem!important}
+  #task-card #task-text{font-size:1.35rem!important}
+  #task-card .clock-value{font-size:2.65rem!important}
+  #task-card .fig{height:11.5rem!important;min-height:11.5rem!important}
+}
+
 </style>
 </head>
 <body>
@@ -1047,7 +1077,7 @@ button:focus-visible{outline:3px solid var(--rescue);outline-offset:3px}
       var t = rescueSession.list[index];
       text.textContent = t.text;
       how.textContent = t.how || 'Keep it comfortable. You can stop or modify the movement at any time.';
-      how.hidden = false;
+      how.hidden = true;
       easy.textContent = t.easy || '';
       easy.hidden = true;
       for (var k = 0; k < figs.length; k++) figs[k].hidden = figs[k].getAttribute('data-fig') !== t.fig;
