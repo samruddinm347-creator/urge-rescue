@@ -1048,8 +1048,8 @@ button:focus-visible{outline:3px solid var(--rescue);outline-offset:3px}
       text.textContent = t.text;
       how.textContent = t.how || 'Keep it comfortable. You can stop or modify the movement at any time.';
       how.hidden = false;
-      easy.textContent = t.easy || 'Gentle movement is enough. No need to push yourself.';
-      easy.hidden = false;
+      easy.textContent = t.easy || '';
+      easy.hidden = true;
       for (var k = 0; k < figs.length; k++) figs[k].hidden = figs[k].getAttribute('data-fig') !== t.fig;
       countEl.textContent = 'EXERCISE ' + (index + 1) + ' OF 5';
       leftEl.textContent = (5 - index - 1) + (index === 3 ? ' left after this' : ' left after this');
