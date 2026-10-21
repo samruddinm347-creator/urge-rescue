@@ -560,6 +560,85 @@ header .wordmark{letter-spacing:-.055em}
  .rescue,.fast{animation:none}
 }
 
+
+/* Reference-led redesign: calm mint fitness-app surfaces, visual-first hierarchy */
+:root{
+ --mint-bg:#cfe8e3; --mint-panel:#e8f5f1; --mint-line:#d8e9e4;
+ --ink:#151b25; --muted:#78848d; --orange:#ff7b22;
+}
+html,body{background:linear-gradient(145deg,#c9e5df 0%,#eaf4f1 48%,#f8eee2 100%)!important}
+body{font-family:Inter,"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;color:var(--ink)}
+header{background:rgba(247,251,250,.78)!important;backdrop-filter:blur(18px);border-color:rgba(255,255,255,.75)!important}
+#home{
+ position:relative;isolation:isolate;overflow:hidden;
+ max-width:560px;margin:clamp(1.5rem,5vh,3.5rem) auto 3rem!important;
+ padding:clamp(1.6rem,6vw,3rem)!important;
+ border:1px solid rgba(255,255,255,.9)!important;border-radius:36px!important;
+ background:linear-gradient(155deg,rgba(255,255,255,.96),rgba(249,253,251,.88))!important;
+ box-shadow:0 24px 70px rgba(42,92,82,.11),inset 0 1px 0 #fff!important;
+}
+#home:before{
+ content:"";position:absolute;z-index:-1;width:310px;height:310px;border-radius:50%;
+ top:-170px;left:-105px;background:linear-gradient(135deg,#dff3ec,#f6eddb);opacity:.9
+}
+#home h1{font-size:clamp(2.7rem,8vw,4.2rem)!important;line-height:.98!important;letter-spacing:-.075em!important;max-width:9ch;margin:0 0 1.2rem!important;font-weight:850!important}
+#home .sub{font-size:1.02rem!important;line-height:1.55!important;color:#77828d!important;max-width:27ch!important;margin:0 0 2.1rem!important}
+#home .rescue-wrap{display:flex;flex-direction:column;gap:14px!important}
+#home #rescue{
+ min-height:76px!important;border-radius:23px!important;
+ background:linear-gradient(135deg,#ff9b45,#ff7b22 58%,#f06a18)!important;
+ border:1px solid rgba(255,255,255,.85)!important;
+ box-shadow:0 5px 0 #d85b16,0 15px 28px rgba(241,111,29,.2),inset 0 1px 0 rgba(255,255,255,.55)!important;
+ font-size:1.12rem!important;font-weight:850!important;letter-spacing:.015em!important
+}
+#home #fast{
+ min-height:76px!important;border-radius:22px!important;
+ background:linear-gradient(145deg,#fff,#edf8f4)!important;border:1px solid #dbece7!important;
+ box-shadow:0 4px 0 #dceae5,inset 0 1px 0 #fff!important;color:#253344!important;
+ font-size:1rem!important;font-weight:800!important
+}
+#home #fast small{display:block;margin-top:5px!important;color:#829098!important;font-size:.84rem!important;font-weight:600!important}
+#home .note{font-size:.88rem!important;color:#8a959d!important;margin:.65rem 0 0!important;text-align:center!important}
+#task-view{max-width:560px;margin:clamp(1rem,4vh,2.5rem) auto 2rem!important}
+#task-stage{border:0!important;background:transparent!important;box-shadow:none!important}
+#task-card{
+ padding:clamp(1.15rem,5vw,2rem)!important;border-radius:34px!important;
+ background:linear-gradient(155deg,#fff 0%,#fbfefd 72%,#f0f8f5 100%)!important;
+ border:1px solid rgba(255,255,255,.96)!important;
+ box-shadow:0 24px 65px rgba(43,88,80,.10),inset 0 1px 0 #fff!important
+}
+#task-card .fig,#task-fig{
+ width:min(100%,220px)!important;min-height:230px!important;margin:1.1rem 0 1.35rem!important;
+ border-radius:30px!important;background:radial-gradient(circle at 50% 35%,#fff 0%,#e3f5ef 76%,#f0f7f4 100%)!important;
+ display:flex;align-items:center;justify-content:center
+}
+#task-card .fig svg,#task-fig svg{width:100%!important;max-height:230px!important}
+#task-text{font-size:clamp(1.8rem,6vw,2.55rem)!important;line-height:1.05!important;letter-spacing:-.065em!important;font-weight:850!important;max-width:15ch}
+#task-time{font-size:clamp(3.7rem,16vw,5.5rem)!important;line-height:.98!important;letter-spacing:-.085em!important;font-weight:850!important;font-variant-numeric:tabular-nums!important;color:#171e29!important}
+#task-how,#task-easy{color:#77848e!important;line-height:1.5!important}
+#task-view .actions button,#task-view #done,#task-view #another,#task-view #back{
+ border-radius:20px!important;min-height:62px!important;font-weight:800!important;letter-spacing:-.02em!important
+}
+#task-view #done,#task-view .primary{
+ background:linear-gradient(135deg,#ff9b45,#f87820)!important;border:1px solid #fff!important;
+ box-shadow:0 4px 0 #d85b16,0 12px 24px rgba(241,111,29,.17),inset 0 1px 0 rgba(255,255,255,.45)!important
+}
+#task-view #another{background:#fff!important;border:1px solid #e1ece8!important;box-shadow:0 3px 0 #e3ece9!important}
+#task-view #back{background:#eff7f4!important;border:1px solid #dfebe7!important}
+#fast-view{max-width:560px;margin:1rem auto 2rem!important}
+@media(min-width:760px){
+ #home{padding:3.2rem!important}
+}
+@media(max-width:600px){
+ #home{margin:1.15rem 1rem 2rem!important;border-radius:31px!important;padding:2rem 1.45rem!important}
+ #home h1{font-size:clamp(2.75rem,12vw,3.7rem)!important}
+ #task-view{margin:1rem 1rem 2rem!important}
+ #task-card{border-radius:30px!important}
+ #task-card .fig,#task-fig{width:160px!important;min-height:185px!important}
+ #task-card .fig svg,#task-fig svg{max-height:185px!important}
+ #task-time{font-size:clamp(3.7rem,16vw,4.8rem)!important}
+}
+
 </style>
 </head>
 <body>
