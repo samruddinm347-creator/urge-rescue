@@ -870,16 +870,10 @@ button:disabled{opacity:.55;cursor:not-allowed}
  linear-gradient(180deg,#eee9f4 0%,#eee9f4 12%,#e8e1f3 42%,#d9d7ef 100%);
 }
 #task-view .fig::after{content:"";position:absolute;inset:0;opacity:.95;background:
- radial-gradient(ellipse at 50% 76%,#f7d7c8 0%,#f7d7c8 18%,transparent 18.5%),
- radial-gradient(ellipse at 50% 58%,#4b4b5d 0%,#4b4b5d 11%,transparent 11.5%),
- radial-gradient(ellipse at 50% 36%,#c99476 0%,#c99476 5.5%,transparent 6%),
- linear-gradient(105deg,transparent 0 26%,#4b4b5d 26% 31%,transparent 31% 69%,#4b4b5d 69% 74%,transparent 74%);
+ linear-gradient(180deg,#eee9f455 0%,#d9d7ef33 55%,#c8c5e544 100%),url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=85');background-size:cover;background-position:center 42%;
 }
 #task-view .fig[data-fig="boxing"]::after{transform:rotate(-7deg) scale(1.12);background:
- radial-gradient(ellipse at 50% 76%,#f7d7c8 0%,#f7d7c8 18%,transparent 18.5%),
- radial-gradient(ellipse at 50% 58%,#b5a6ef 0%,#b5a6ef 11%,transparent 11.5%),
- radial-gradient(ellipse at 50% 36%,#c99476 0%,#c99476 5.5%,transparent 6%),
- linear-gradient(75deg,transparent 0 25%,#b5a6ef 25% 31%,transparent 31% 69%,#b5a6ef 69% 75%,transparent 75%)}
+ linear-gradient(180deg,#eee9f433 0%,#d9d7ef22 55%,#c8c5e544 100%),url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=85')}
 #task-view .fig[data-fig="squat"]::after,#task-view .fig[data-fig="march"]::after,#task-view .fig[data-fig="knees"]::after{animation:person-breathe 2.6s ease-in-out infinite alternate}
 @keyframes person-breathe{from{transform:translateY(0) scale(1)}to{transform:translateY(-5px) scale(1.012)}}
 #task-view .session-clock{position:absolute!important;z-index:6;top:12px;right:12px;grid-area:auto!important;
@@ -949,6 +943,29 @@ button:disabled{opacity:.55;cursor:not-allowed}
 #task-view #task-actions #done.is-paused::before{content:"▶";font-size:17px}
 #task-view #task-actions #done::before{content:"Ⅱ";font-size:22px;font-weight:700}
 @media(max-width:430px){#task-view .session-reps{left:calc((100% - 12px)/3 + 6px);width:calc((100% - 12px)/3);height:64px}#task-view .session-reps strong{font-size:23px}}
+
+</style>
+<style>
+
+#task-view .night-toggle{position:absolute;z-index:7;left:18px;bottom:26px;display:flex;align-items:center;gap:7px;padding:9px 12px;border:0;border-radius:999px;background:#ffffff7a;color:#373343;font:500 11px Inter,Manrope,system-ui,sans-serif;box-shadow:0 5px 18px #20182e0c;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);cursor:pointer}
+#task-view .night-toggle .toggle-dot{width:7px;height:7px;border-radius:50%;background:#a89af7}
+#task-view.night-mode{background:#10111b!important}
+#task-view.night-mode #task-stage{background:#191927}
+#task-view.night-mode .fig::before{background-image:linear-gradient(180deg,#20202d 0%,#292638 55%,#171923 100%)}
+#task-view.night-mode .fig::after{filter:brightness(.6) saturate(.75)}
+#task-view.night-mode .session-clock{background:#272737!important;color:#fff}
+#task-view.night-mode .clock-value{color:#f6f4ff!important}
+#task-view.night-mode .clock-label{color:#c2bfd1!important}
+#task-view.night-mode .session-progress::after{background:#6b7d79}
+#task-view.night-mode .session-reps{color:#f5f4ff}
+#task-view.night-mode .session-reps span{color:#d2d2df}
+#task-view.night-mode .session-kicker{background:#262637d9;color:#e9e4ff!important}
+#task-view.night-mode #task-text{color:#f5f4ff!important;text-shadow:none}
+#task-view.night-mode .night-toggle{background:#272737c9;color:#f1efff}
+#task-view.night-mode #task-actions{background:#2525367a;border-color:#ffffff35}
+#task-view.night-mode #task-actions .btn{background:#3a394c!important;color:#fff!important}
+#task-view.night-mode #task-actions #done{background:#b9efdc!important;color:#20232a!important}
+@media(max-width:430px){#task-view .night-toggle{left:12px;bottom:20px;padding:8px 10px}}
 
 </style>
 </head>
@@ -1353,6 +1370,17 @@ button:disabled{opacity:.55;cursor:not-allowed}
     repCount.innerHTML = '<strong id="session-rep-value">10</strong><span id="session-rep-label">jabs</span>';
     progressWrap.appendChild(repCount);
     var paused = false;
+    var nightToggle = document.createElement('button');
+    nightToggle.type = 'button';
+    nightToggle.className = 'night-toggle';
+    nightToggle.innerHTML = '<span class="toggle-dot"></span><span>Night mode</span>';
+    nightToggle.setAttribute('aria-pressed','false');
+    view.appendChild(nightToggle);
+    nightToggle.addEventListener('click', function(){
+      var enabled = view.classList.toggle('night-mode');
+      nightToggle.setAttribute('aria-pressed', String(enabled));
+      nightToggle.lastElementChild.textContent = enabled ? 'Light mode' : 'Night mode';
+    });
     card.insertBefore(progressWrap, card.firstChild);
     card.insertBefore(sessionKicker, text);
     card.insertBefore(sessionClock, how);
@@ -1426,14 +1454,9 @@ button:disabled{opacity:.55;cursor:not-allowed}
       var nextBtn = $('done'); nextBtn.textContent = index === 4 ? 'Finish session' : 'Next exercise';
       $('another').textContent = 'Skip exercise';
       replay(card);
-      if (isTimed) {
-        rescueSession.endAt = Date.now() + Math.max(10, t.secs) * 1000;
-        clockEl.textContent = formatRescueTime(t.secs);
-        rescueSession.interval = setInterval(paintRescueClock, 200);
-      } else {
-        rescueSession.endAt = 0;
-        clockEl.textContent = '';
-      }
+      rescueSession.endAt = Date.now() + Math.max(10, t.secs || 30) * 1000;
+      clockEl.textContent = formatRescueTime(t.secs || 30);
+      rescueSession.interval = setInterval(paintRescueClock, 200);
       text.focus({preventScroll:true});
     }
     function startRescueSession() {
@@ -1486,7 +1509,7 @@ button:disabled{opacity:.55;cursor:not-allowed}
     });
     $('more').addEventListener('click', restartRescueSession);   // start a fresh five-exercise session
     $('okay').addEventListener('click', function(){ stopRescueClock(); goBack(); });
-    $('back').addEventListener('click', function(){ stopRescueClock(); goBack(); });
+    $('back').addEventListener('click', function(){ stopRescueClock(); if (rescueSession.index > 0) runRescueExercise(rescueSession.index - 1); else goBack(); });
   })();
 </script>
 </body>
