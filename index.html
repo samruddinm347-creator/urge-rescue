@@ -869,13 +869,10 @@ button:disabled{opacity:.55;cursor:not-allowed}
 #task-view .fig::before{content:"";position:absolute;inset:0;background-image:
  linear-gradient(180deg,#eee9f4 0%,#eee9f4 12%,#e8e1f3 42%,#d9d7ef 100%);
 }
-#task-view .fig::after{content:"";position:absolute;inset:0;opacity:.95;background:
- linear-gradient(180deg,#eee9f455 0%,#d9d7ef33 55%,#c8c5e544 100%),url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=85');background-size:cover;background-position:center 42%;
+#task-view .fig::after{content:"";position:absolute;inset:0;opacity:1;
+ background:linear-gradient(180deg,#f5f2fb 0%,#e9e3f5 48%,#dcd8ee 100%);
 }
-#task-view .fig[data-fig="boxing"]::after{transform:rotate(-7deg) scale(1.12);background:
- linear-gradient(180deg,#eee9f433 0%,#d9d7ef22 55%,#c8c5e544 100%),url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=85')}
-#task-view .fig[data-fig="squat"]::after,#task-view .fig[data-fig="march"]::after,#task-view .fig[data-fig="knees"]::after{animation:person-breathe 2.6s ease-in-out infinite alternate}
-@keyframes person-breathe{from{transform:translateY(0) scale(1)}to{transform:translateY(-5px) scale(1.012)}}
+#task-view.night-mode .fig::after{background:linear-gradient(180deg,#292738 0%,#222231 55%,#171923 100%)}
 #task-view .session-clock{position:absolute!important;z-index:6;top:12px;right:12px;grid-area:auto!important;
  display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:1px!important;
  width:calc((100% - 40px)/3);height:70px;margin:0!important;border-radius:16px;background:#fff!important;
